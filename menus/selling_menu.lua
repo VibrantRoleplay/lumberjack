@@ -1,0 +1,30 @@
+RegisterNetEvent('lumberjack:client:SellMenu', function(data)
+    PlayPedAmbientSpeechNative(data.entity, 'GENERIC_HOWS_IT_GOING', 'Speech_Params_Force')
+	local headerMenu = {}
+
+    headerMenu[#headerMenu + 1] = {
+        title = "Sell Wood Pallets",
+        description = "Sell all of your pallets of cut planks",
+        serverEvent = 'lumberjack:server:SellItem',
+        args = Config.LumberSelling.SellableItems.Pallets,
+        icon = 'fa-solid fa-hammer',
+        iconColor = "yellow",
+    }
+
+    headerMenu[#headerMenu + 1] = {
+        title = "Sell Wood Logs",
+        description = "Sell all of you raw logs",
+        serverEvent = 'lumberjack:server:SellItem',
+        args = Config.LumberSelling.SellableItems.Lumber,
+        icon = 'fa-solid fa-toolbox',
+        iconColor = "yellow",
+    }
+
+    lib.registerContext({
+        id = 'selling_menu',
+        title = "Lumber Sales",
+        options = headerMenu
+    })
+
+    lib.showContext('selling_menu')
+end)

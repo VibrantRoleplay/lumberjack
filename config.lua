@@ -8,7 +8,7 @@ Config.GenericStuff = {
 }
 
 Config.Lumberyard = {
-    Foreman = {
+    Foreman = { -- Ped where players can buy equipment and vehicles
         Model = "s_m_y_construct_01",
         Location = vector4(-554.62, 5349.31, 73.74, 68.4),
         Blip = {
@@ -20,7 +20,7 @@ Config.Lumberyard = {
             Label = 'Lumberyard',
         },
     },
-    Vehicles = {
+    Vehicles = { -- Vehicles that display in the menu for players to spawn
         {
             Model = 'tiptruck',
             SpawnLocation = vector4(-576.61, 5372.12, 70.24, 256.57),
@@ -44,8 +44,8 @@ Config.Lumberyard = {
                 },
             },
             Item = 'tree_bark',
-            ProcessAmountPerTick = 10,
-            ValuePerBark = 1,
+            ProcessAmountPerTick = 10, -- Amount of [tree_bark] it takes off the player per interaction if they have enough
+            ValuePerBark = 1, -- How much each piece is worth
         },
         Logs = {
             Item = 'tree_lumber',
@@ -77,7 +77,7 @@ Config.Lumberyard = {
     },
 }
 
-Config.LumberSelling = {
+Config.LumberSelling = { -- Where players sell [tree_lumber] & [wood_pallet]
     Ped = {
         Model = "s_m_y_construct_01",
         Location = vector4(1197.03, -3253.55, 6.09, 87.25)
@@ -102,9 +102,9 @@ Config.LumberSelling = {
     },
 }
 
-Config.ChoppingItem = `weapon_battleaxe`
+Config.ChoppingItem = `weapon_battleaxe` -- Item needed in hand to chop a tree
 
-Config.Trees = {
+Config.Trees = { -- Locations of trees (Add as many more as you like, there's 100 by default)
     vector3(-504.47, 5392.09, 75.82),
     vector3(-510.08, 5389.15, 73.71),
     vector3(-558.32, 5418.98, 62.78),

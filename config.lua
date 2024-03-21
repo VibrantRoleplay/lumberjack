@@ -93,11 +93,11 @@ Config.LumberSelling = { -- Where players sell [tree_lumber] & [wood_pallet]
     SellableItems = {
         Lumber = {
             Item = 'tree_lumber',
-            ValuePerItem = 3,
+            ValuePerItem = math.random(2, 4),
         },
         Pallets = {
             Item = 'wood_pallet',
-            ValuePerItem = 95,
+            ValuePerItem = math.random(70, 95),
         },
     },
 }

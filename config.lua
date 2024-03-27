@@ -1,7 +1,7 @@
 Config = Config or {}
 
 Config.GenericStuff = {
-    Debug = true,
+    Debug = false,
     UseBlips = true,
     TreeCooldown =  1, -- Cooldown of each tree after being chopped in minutes
     ChanceForBark = 50, -- % chance to get bark when chopping a tree

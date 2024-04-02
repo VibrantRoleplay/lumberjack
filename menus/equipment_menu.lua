@@ -5,7 +5,7 @@ RegisterNetEvent('lumberjack:client:EquipmentMenu', function()
 
     headerMenu[#headerMenu + 1] = {
         title = "Cutting axe",
-        description = "Purchase a wood cutting Axe",
+        description = "Start felling trees!",
         serverEvent = 'lumberjack:server:PurchaseEquipment',
         args = Config.Lumberyard.EquipmentBuying.TreeChoppingItem,
         icon = 'fa-solid fa-tree',
@@ -15,7 +15,7 @@ RegisterNetEvent('lumberjack:client:EquipmentMenu', function()
 
     headerMenu[#headerMenu + 1] = {
         title = "Table Saw",
-        description = "Purchase a table saw to help you cut your logs into planks",
+        description = "Plce this down and start turning your lumber into finely cut planks",
         serverEvent = 'lumberjack:server:PurchaseEquipment',
         args = Config.Lumberyard.EquipmentBuying.TableSawItem,
         icon = 'fa-solid fa-fan',

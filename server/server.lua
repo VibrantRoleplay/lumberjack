@@ -111,7 +111,7 @@ end)
 
 RegisterNetEvent('lumberjack:server:CollectTableSaw', function(data)
     if exports.ox_inventory:CanCarryItem(source, Config.Lumberyard.EquipmentBuying.TableSawItem.Item, 1) then
-        DeleteEntity(data.args)
+        DeleteEntity(data.args.object)
         exports.ox_inventory:AddItem(source, Config.Lumberyard.EquipmentBuying.TableSawItem.Item, 1)
     else
         lib.notify(source, {

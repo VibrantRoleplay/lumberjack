@@ -6,6 +6,7 @@ QBCore = exports['qb-core']:GetCoreObject()
 
 local placeableItemUsed = false
 local placeableItemPlaced = false
+cuttingWood = false
 
 RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
     local treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Logs.Item)
@@ -19,42 +20,50 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
         return
     end
 
-    local cuttingWood = true
+    cuttingWood = true
     CreateThread(function()
         while cuttingWood do
             lib.requestNamedPtfxAsset('core')
             UseParticleFxAsset("core")
             -- StartNetworkedParticleFxLoopedOnEntity(effectName, entity, xOffset, yOffset, zOffset, xRot, yRot, zRot, scale, xAxis, yAxis, zAxis)
-            local tableSawPTX = StartNetworkedParticleFxLoopedOnEntity("ent_brk_tree_trunk_bark", data.args, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.5)
+            local tableSawPTX = StartNetworkedParticleFxLoopedOnEntity("ent_brk_tree_trunk_bark", data.args.entity, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.5)
             Wait(300)
         end
     end)
 
-    if lib.progressCircle({
-        duration = 2000,
-        label = 'Cutting planks',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            car = true,
-            move = true,
-            combat = true,
-        },
-        animation = {
-			dict = "amb@prop_human_parking_meter@male@idle_a",
-			clip = "idle_a",
-        },
-    }) then
-        cuttingWood = false
-        TriggerServerEvent('lumberjack:server:ProcessLumber')
-    else
-        cuttingWood = false
-        lib.notify({
-            title = "Canceled",
-            description = 'Canceled',
-            type = 'error'
-        })
-    end
+    lib.requestAnimDict('mini@repair')
+
+    repeat
+        TaskPlayAnim(cache.ped, 'mini@repair', 'fixing_a_ped', 8.0, 1.0, -1, 1, 0, 0, 0, 0)
+        if lib.progressCircle({
+            duration = 5000,
+            label = 'Cutting planks',
+            useWhileDead = false,
+            canCancel = true,
+            disable = {
+                car = true,
+                move = true,
+                combat = true,
+            },
+            -- animation = {
+            --     dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+            --     clip = "machinic_loop_mechandplayer",
+            -- },
+        }) then
+            TriggerServerEvent('lumberjack:server:ProcessLumber')
+            ClearPedTasksImmediately(cache.ped)
+            RemoveAnimDict('mini@repair')
+        else
+            cuttingWood = false
+            ClearPedTasksImmediately(cache.ped)
+            RemoveAnimDict('mini@repair')
+            lib.notify({
+                title = "Canceled",
+                description = 'Canceled',
+                type = 'error'
+            })
+        end
+    until cuttingWood == false
 end)
 
 RegisterNetEvent('lumberjack:client:PackagePlanks', function()

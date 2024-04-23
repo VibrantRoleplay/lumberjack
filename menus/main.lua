@@ -28,3 +28,44 @@ RegisterNetEvent('lumberjack:client:ForemanMenu', function(data)
 
     lib.showContext('foreman_menu')
 end)
+
+RegisterNetEvent('lumberjack:client:TableSawMenu', function(data)
+	local headerMenu = {}
+
+    headerMenu[#headerMenu + 1] = {
+        title = "Pick up Table Saw",
+        serverEvent = 'lumberjack:server:CollectTableSaw',
+        icon = 'fa-solid fa-toolbox',
+        iconColor = "yellow",
+        args = data,
+    }
+
+    headerMenu[#headerMenu + 1] = {
+        title = "Cut Planks",
+        description = "Convert raw lumber into cut planks",
+        event = 'lumberjack:client:ProcessWoodIntoPlanks',
+        icon = 'fa-solid fa-hammer',
+        iconColor = "yellow",
+        args = data,
+    }
+
+    if cuttingWood then
+        headerMenu[#headerMenu + 1] = {
+            title = "Stop Cutting",
+            description = "Turn off Table Saw",
+            onSelect = function()
+                cuttingWood = false
+            end,
+            icon = 'fa-solid fa-toolbox',
+            iconColor = "yellow",
+        }
+    end
+
+    lib.registerContext({
+        id = 'table_saw_menu',
+        title = "Table Saw",
+        options = headerMenu
+    })
+
+    lib.showContext('table_saw_menu')
+end)

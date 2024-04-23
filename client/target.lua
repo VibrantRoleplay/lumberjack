@@ -51,20 +51,15 @@ RegisterNetEvent('lumberjack:client:CreateEntityTarget', function(newEntity, obj
 
     local entityTarget = exports.ox_target:addLocalEntity(newEntityNetwork, {
         {
-            label = "Cut logs",
-            event = 'lumberjack:client:ProcessWoodIntoPlanks',
-            icon = 'fa-solid fa-hand-up',
+            label = "Table Saw",
+            event = 'lumberjack:client:TableSawMenu',
+            icon = 'fa-solid fa-fan',
             iconColor = "green",
             distance = 2.0,
-            args = newEntityNetwork,
+            args = {
+                entity = newEntityNetwork,
+                object = objectPlaced,
+            },
         },
-        {
-            label = "Pick up Table Saw",
-            serverEvent = 'lumberjack:server:CollectTableSaw',
-            icon = 'fa-solid fa-hand-up',
-            iconColor = "green",
-            distance = 2.0,
-            args = objectPlaced,
-        }
     })
 end)

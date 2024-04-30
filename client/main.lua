@@ -63,6 +63,13 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
                 type = 'error'
             })
         end
+        Wait(100)
+        treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Logs.Item)
+
+        if treeLumberAmount <= 0 then
+            cuttingWood = false
+            return
+        end
     until cuttingWood == false
 end)
 

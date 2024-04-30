@@ -20,11 +20,11 @@ RegisterNetEvent('lumberjack:client:PlaceTablesaw', function()
     SetModelAsNoLongerNeeded(itemModel)
     placeableItemUsed = true
 
-    lib.showTextUI("[E] to place\n\n[X] to rotate\n\n[G] to cancel",
+    lib.showTextUI("[E] to place\n[X] to rotate\n[G] to cancel",
     {
         position = 'right-center',
         style = {
-            borderRadius = 5,
+            borderRadius = 2,
             backgroundColor = '#212529',
             color = '#F8F9FA',
         },

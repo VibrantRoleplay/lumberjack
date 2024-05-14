@@ -102,7 +102,7 @@ Config.LumberSelling = { -- Where players sell [tree_lumber] & [wood_pallet]
     },
 }
 
-Config.ChoppingItem = `weapon_battleaxe` -- Item needed in hand to chop a tree
+Config.ChoppingItem = `WEAPON_Hatchet` -- Item needed in hand to chop a tree
 
 Config.Trees = { -- Locations of trees (Add as many more as you like, there's 100 by default)
     vector3(-504.47, 5392.09, 75.82),

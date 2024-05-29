@@ -51,11 +51,11 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
             -- },
         }) then
             TriggerServerEvent('lumberjack:server:ProcessLumber')
-            ClearPedTasksImmediately(cache.ped)
+            ClearPedTasks(cache.ped)
             RemoveAnimDict('mini@repair')
         else
             cuttingWood = false
-            ClearPedTasksImmediately(cache.ped)
+            ClearPedTasks(cache.ped)
             RemoveAnimDict('mini@repair')
             lib.notify({
                 title = "Canceled",
@@ -68,6 +68,7 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
 
         if treeLumberAmount <= 0 then
             cuttingWood = false
+            ClearPedTasks(cache.ped)
             return
         end
     until cuttingWood == false

@@ -28,7 +28,7 @@ Config.Lumberyard = {
         },
         RentableVehicles = {
             {
-                Model = 'tiptruck',
+                Model = 'bison',
                 Cost = 50,
             },
             {

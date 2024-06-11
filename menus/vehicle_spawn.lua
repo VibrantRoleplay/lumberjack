@@ -3,7 +3,7 @@ RegisterNetEvent('lumberjack:client:VehicleMenu', function(data)
     local moneyAmount = exports.ox_inventory:Search('count', 'money')
     local description = nil
 
-    for k, v in pairs(Config.Lumberyard.Vehicles) do
+    for k, v in pairs(Config.Lumberyard.Vehicles.RentableVehicles) do
         if moneyAmount >= v.Cost then
             description = "Rent "..v.Model.." for $"..v.Cost
         else

@@ -21,15 +21,20 @@ Config.Lumberyard = {
         },
     },
     Vehicles = { -- Vehicles that display in the menu for players to spawn
-        {
-            Model = 'tiptruck',
-            SpawnLocation = vector4(-576.61, 5372.12, 70.24, 256.57),
-            Cost = 50,
+        SpawnLocations = {
+            vector4(-574.87, 5369.26, 69.77, 249.71),
+            vector4(-569.26, 5378.38, 69.72, 288.39),
+            vector4(-547.68, 5379.04, 70.03, 85.77),
         },
-        {
-            Model = 'blazer6',
-            SpawnLocation = vector4(-576.61, 5372.12, 70.24, 256.57),
-            Cost = 50,
+        RentableVehicles = {
+            {
+                Model = 'tiptruck',
+                Cost = 50,
+            },
+            {
+                Model = 'blazer6',
+                Cost = 50,
+            },
         },
     },
     Processing = {

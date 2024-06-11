@@ -73,7 +73,7 @@ Config.Lumberyard = {
     EquipmentBuying = {
         TreeChoppingItem = {
             Item = 'WEAPON_Hatchet',
-            Price = 175,
+            Price = 295,
         },
         TableSawItem = {
             Item = 'table_saw',

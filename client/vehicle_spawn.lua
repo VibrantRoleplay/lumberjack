@@ -60,7 +60,14 @@ RegisterNetEvent("lumberjack:client:RemoveSpawnedVehicle", function(data)
         return
     end
 
-    if distance > 15 then
+    if distance < 15 then
+        QBCore.Functions.DeleteVehicle(currentVehicle)
+        lib.notify({
+            title = 'Returned',
+            description = 'You returned the vehicle!',
+            type = 'error'
+        })
+    else
         lib.notify({
             title = 'Unable',
             description = 'Your vehicle is too far away',
@@ -68,6 +75,4 @@ RegisterNetEvent("lumberjack:client:RemoveSpawnedVehicle", function(data)
         })
         return
     end
-
-	QBCore.Functions.DeleteVehicle(currentVehicle)
 end)

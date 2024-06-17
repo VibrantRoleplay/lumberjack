@@ -20,6 +20,15 @@ RegisterNetEvent('lumberjack:client:SellMenu', function(data)
         iconColor = "yellow",
     }
 
+    headerMenu[#headerMenu + 1] = {
+        title = "Return Vehicle",
+        description = "Return depot vehicle",
+        event = 'lumberjack:client:RemoveSpawnedVehicle',
+        icon = 'fa-solid fa-truck',
+        iconColor = "yellow",
+        args = data,
+    }
+
     lib.registerContext({
         id = 'selling_menu',
         title = "Lumber Sales",
